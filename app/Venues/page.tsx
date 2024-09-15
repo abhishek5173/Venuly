@@ -49,7 +49,7 @@ export default async function Venues() {
                     rotateZ={-10}
                     className="w-full mt-4"
                   >
-                    <img
+                    <Image
                       src={venue.image}
                       height="1000"
                       width="1000"

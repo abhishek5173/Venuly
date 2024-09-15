@@ -1,6 +1,6 @@
 
 
-export default function(){
+const LoadingComponent = () =>{
     return (
       <div className="h-screen w-screen flex justify-center items-center">
         <div role="status">
@@ -25,3 +25,6 @@ export default function(){
       </div>
     );
 }
+
+LoadingComponent.displayName = 'LoadingComponent';
+export default LoadingComponent;
