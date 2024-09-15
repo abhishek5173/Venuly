@@ -8,7 +8,7 @@ interface Venue {
   name: string;
   description: string;
   location: string;
-  image: string | null; // Update to allow null
+  image: string | null; // Allow null for image
 }
 
 async function allvenues(): Promise<Venue[]> {
@@ -17,7 +17,8 @@ async function allvenues(): Promise<Venue[]> {
 }
 
 export default async function Venues() {
-  const venuedata = await allvenues();
+  const venuedata: Venue[] = await allvenues(); // Explicitly type venuedata
+
   return (
     <div className="flex flex-col items-center justify-center bg-slate-200/35 w-full min-h-screen">
       <BackgroundBeamsWithCollision>
@@ -57,7 +58,6 @@ export default async function Venues() {
                     rotateZ={-10}
                     className="w-full mt-4"
                   >
-                    {/* Handle the case where image might be null */}
                     {venue.image ? (
                       <Image
                         src={venue.image}
