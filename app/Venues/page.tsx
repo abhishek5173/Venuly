@@ -3,7 +3,15 @@ import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-w
 import { prisma } from "@/lib/prisma";
 import Image from "next/image";
 
-async function allvenues() {
+interface Venue {
+  id: number; // or string depending on your database schema
+  name: string;
+  description: string;
+  location: string;
+  image: string | null; // Update to allow null
+}
+
+async function allvenues(): Promise<Venue[]> {
   const venues = await prisma.venues.findMany();
   return venues;
 }
@@ -20,7 +28,7 @@ export default async function Venues() {
 
           {/* Grid layout on large screens and scrollable vertical layout on smaller screens */}
           <div className="flex flex-col lg:grid lg:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 overflow-y-auto scrollbar-thin scrollbar-thumb-indigo-500 pb-4 h-[75vh] w-full items-center">
-            {venuedata.map((venue) => (
+            {venuedata.map((venue: Venue) => (
               <CardContainer key={venue.id} className="inter-var">
                 <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full sm:w-[260px] md:w-[300px] lg:w-[350px] h-auto rounded-xl p-4 sm:p-6 border">
                   <CardItem
@@ -49,13 +57,20 @@ export default async function Venues() {
                     rotateZ={-10}
                     className="w-full mt-4"
                   >
-                    <Image
-                      src={venue.image}
-                      height="1000"
-                      width="1000"
-                      className="h-40 sm:h-48 md:h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
-                      alt="thumbnail"
-                    />
+                    {/* Handle the case where image might be null */}
+                    {venue.image ? (
+                      <Image
+                        src={venue.image}
+                        height={1000}
+                        width={1000}
+                        className="h-40 sm:h-48 md:h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                        alt="thumbnail"
+                      />
+                    ) : (
+                      <div className="h-40 sm:h-48 md:h-60 w-full bg-gray-200 rounded-xl flex items-center justify-center">
+                        <span className="text-gray-500">No Image Available</span>
+                      </div>
+                    )}
                   </CardItem>
                 </CardBody>
               </CardContainer>
