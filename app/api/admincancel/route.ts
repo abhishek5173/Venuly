@@ -32,19 +32,6 @@ export async function DELETE(req: NextRequest) {
     }
 
     try {
-      
-        const existingBooking = await prisma.booking.findFirst({
-            where: {
-                id: parseInt(bookingId),
-                userId: session.user.id,
-            },
-        });
-
-        if (!existingBooking) {
-            return new NextResponse(JSON.stringify({ error: "Booking not found or not authorized" }), { status: 404 });
-        }
-
-        // Delete the booking
         await prisma.booking.delete({
             where: {
                 id: parseInt(bookingId),
