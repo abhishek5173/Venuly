@@ -60,12 +60,14 @@ export default async function Venues() {
                   >
                     {venue.image ? (
                       <Image
-                        src={venue.image}
-                        height={1000}
-                        width={1000}
-                        className="h-40 sm:h-48 md:h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
-                        alt="thumbnail"
-                      />
+                      src={venue.image}
+                      height={1000}
+                      width={1000}
+                      className="w-full object-cover rounded-xl"
+                      alt="thumbnail"
+                      unoptimized
+                    />
+                    
                     ) : (
                       <div className="h-40 sm:h-48 md:h-60 w-full bg-gray-200 rounded-xl flex items-center justify-center">
                         <span className="text-gray-500">No Image Available</span>
