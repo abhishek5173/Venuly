@@ -6,6 +6,7 @@ import { NEXT_AUTH_CONFIG } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import { Toaster } from 'react-hot-toast';
 import Navbar from "@/components/Navbar";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,6 +28,7 @@ export default async function RootLayout({
         <Providers>
           <Navbar session={session} isAdmin={isAdmin}/>
           <Toaster position="bottom-left" reverseOrder={false} />
+          <SpeedInsights/>
         {children}
         </Providers>
       </body>
