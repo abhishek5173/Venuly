@@ -1,7 +1,7 @@
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 import { prisma } from "@/lib/prisma";
-import Image from "next/image";
+
 
 interface Venue {
   id: number; // or string depending on your database schema
@@ -59,11 +59,10 @@ export default async function Venues() {
                     className="w-full mt-4"
                   >
                     {venue.image ? (
-                     <Image
+                     <img
                      src={venue.image}
                      height={1000}
                      width={1000}
-                     layout="responsive"
                      className="w-full object-cover rounded-xl"
                      alt="thumbnail"
                    />
