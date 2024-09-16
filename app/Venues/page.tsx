@@ -59,14 +59,14 @@ export default async function Venues() {
                     className="w-full mt-4"
                   >
                     {venue.image ? (
-                      <Image
-                      src={venue.image}
-                      height={1000}
-                      width={1000}
-                      className="w-full object-cover rounded-xl"
-                      alt="thumbnail"
-                      unoptimized
-                    />
+                     <Image
+                     src={venue.image}
+                     height={1000}
+                     width={1000}
+                     layout="responsive"
+                     className="w-full object-cover rounded-xl"
+                     alt="thumbnail"
+                   />
                     
                     ) : (
                       <div className="h-40 sm:h-48 md:h-60 w-full bg-gray-200 rounded-xl flex items-center justify-center">
