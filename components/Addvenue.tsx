@@ -19,7 +19,7 @@ export default function AddVenue() {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [location, setLocation] = useState("");
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<Record<string, string>>({}); 
 
   // Handle form submission with async
   const handleSubmit = async (e: React.FormEvent) => {
